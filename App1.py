@@ -23,7 +23,7 @@ import cv2
 
 # Custom modules
 from ela_analyzer import ErrorLevelAnalyzer
-from deepfake_detector import DeepFakeDetector
+# from deepfake_detector import DeepFakeDetector
 from clone_detection import CloneDetector
 from Forgery import ForgeryDetector
 from pixel_level_anomaly import ReceiptTamperingDetector
@@ -353,23 +353,23 @@ def analyze_forgery():
             os.remove(filepath)
 
 
-@app.route("/api/deepfake-detection", methods=["POST"])
-def detect_deepfake():
-    if "image" not in request.files:
-        return jsonify({"error": "No image uploaded"}), 400
+# @app.route("/api/deepfake-detection", methods=["POST"])
+# def detect_deepfake():
+#     if "image" not in request.files:
+#         return jsonify({"error": "No image uploaded"}), 400
 
-    image_file = request.files["image"]
-    image_path = os.path.join(app.config['UPLOAD_FOLDER'], "temp_image.jpg")
-    image_file.save(image_path)
+#     image_file = request.files["image"]
+#     image_path = os.path.join(app.config['UPLOAD_FOLDER'], "temp_image.jpg")
+#     image_file.save(image_path)
 
-    try:
-        result = deepfake_detector.predict(image_path)
-        return jsonify(result)
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-    finally:
-        if os.path.exists(image_path):
-            os.remove(image_path)
+#     try:
+#         result = deepfake_detector.predict(image_path)
+#         return jsonify(result)
+#     except Exception as e:
+#         return jsonify({"error": str(e)}), 500
+#     finally:
+#         if os.path.exists(image_path):
+#             os.remove(image_path)
 
 
 
