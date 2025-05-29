@@ -268,7 +268,7 @@ def save_analysis_result(original_image, analysis_type, analysis_subtype, result
 
 
 # Initialize detectors
-deepfake_detector = DeepFakeDetector()
+# deepfake_detector = DeepFakeDetector()
 forgery_detector = ForgeryDetector()
 clone_detector = CloneDetector()
 analyzer = ReceiptAnalyzer()
